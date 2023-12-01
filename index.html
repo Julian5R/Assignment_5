@@ -1,0 +1,87 @@
+<!DOCTYPE html>>
+</head>
+        <title>The Magic Word</title>
+<script>
+    var message = "Computer Programming!";
+    var message2 = "is wonderful!";
+    var message3 = message + message2;
+    var pressCount = 0;
+    var stringLength =0;
+    var whatTheyTyped = "";
+    
+    <script> 
+  <label for="wordLabel">Magic Word:</label>
+<label id="wordLabel"> </label>
+<input type="text" id="inputChar" maxlength="1">
+<button onclick="addLetter('start')">Add to Start</button>
+<button onclick="addLetter('end')">Add to End</button>
+<button onclick="deleteLetter('start')">Delete from Start</button>
+<button onclick="deleteLetter('end')">Delete from End</button>
+
+<script>
+   let magicWord = "";
+   function updateLabel() {
+       document.getElementById("wordLabel").innerText = magicWord;
+   }
+   function addLetter(position) {
+       const inputChar = document.getElementById("inputChar").value;
+       if (inputChar && magicWord.length < 18) {
+           if (position === 'start') {
+               magicWord = inputChar + magicWord;
+           } else {
+               magicWord = magicWord + inputChar;
+           }
+           document.getElementById("inputChar").value = "";
+           document.getElementById("inputChar").focus();
+           updateLabel();
+       }
+   }
+   function deleteLetter(position) {
+       if (magicWord.length > 0) {
+           if (position === 'start') {
+               magicWord = magicWord.slice(1);
+           } else {
+               magicWord = magicWord.slice(0, -1);
+           }
+           updateLabel();
+           document.getElementById("inputChar").focus();
+       }
+
+
+    function mainButtonPress()
+    {
+        pressCount ++;
+        whatTheyTyped = document.getElementById("textInput").value;
+        message = whatTheyTyped.substring(4); //Starting the string at position 4
+        message = whatTheyTyped.substring(6,3);
+        document.getElementById("userCommunication").innerHTML = message;
+
+    }
+
+    function getLength() 
+    {
+        whatTheyTyped = document.getElementById("textInput").value;
+        stringLength = whatTheyTyped.length;
+        document.getElementById("userCommunication").innerHTML = "You typed " + stringLength + " characters!"
+
+
+
+    }
+</script>
+
+</head>
+<body>
+
+<input id="textInput" onkeyup="getLength();">
+
+<button  id="mainButton" onClick = "mainButtonPress();">
+    Press
+</button>
+
+<p  id="userCommunication">
+    Communication Place
+</p>
+
+
+</body>
+</html>
